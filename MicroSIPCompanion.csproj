@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>MicroSIPCompanion</AssemblyName>
+    <RootNamespace>MicroSIPRemote</RootNamespace>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Title>MicroSIP Companion</Title>
+    <Product>MicroSIP Companion</Product>
+    <Description>Answer and hang up MicroSIP calls from your phone</Description>
+    <Authors>bennyborn</Authors>
+    <Company>bennyborn</Company>
+    <Copyright>Copyright © 2026 bennyborn</Copyright>
+    <Version>1.0.0</Version>
+    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/bennyborn/microsip-companion</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <Target Name="CleanReleaseOutput" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
+    <Delete Files="$(OutputPath)$(AssemblyName).exe.config" />
+  </Target>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+  </ItemGroup>
+</Project>
